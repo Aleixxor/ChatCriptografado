@@ -56,6 +56,7 @@ function encryptDecrypt(message){
 let messages = [];
 let newUserMessage = "Um novo usuário entrou na sala!";
 let refreshPage = "ERRO: Por favor, atualize a página!";
+let userLeftMessage = "Um usuário saiu da sala!";
 io.on('connection', socket => {
     console.log(`Socket conectado: ${socket.id}`);
 
@@ -76,7 +77,7 @@ io.on('connection', socket => {
     });
     
     socket.on('disconnect', function () {
-        io.emit('Um usuário saiu da sala!');
+        socket.broadcast.emit('newUser', userLeftMessage);
   });
 });
 
