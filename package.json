@@ -10,10 +10,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "0.10.x",
+  }
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "socket.io": "^2.1.1",
+    "express": "*",
+    "socket.io": "*",
     "yarn": "^1.9.4"
   }
 }
