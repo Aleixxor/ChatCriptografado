@@ -54,7 +54,8 @@ function encryptDecrypt(message){
 }
 
 let messages = [];
-var newUserMessage = "Um novo usuário entrou na sala!";
+let newUserMessage = "Um novo usuário entrou na sala!";
+let refreshPage = "ERRO: Por favor, atualize a página!";
 io.on('connection', socket => {
     console.log(`Socket conectado: ${socket.id}`);
 
@@ -64,10 +65,19 @@ io.on('connection', socket => {
     socket.broadcast.emit('newUser', newUserMessage);
     socket.on('sendMessage', data => {
         data = encryptDecrypt(data);
-        messages.push(data);
-        console.log(data);
-        socket.broadcast.emit('receivedMessage', encryptDecrypt(data));
+        if(data.author == 'Aleixxor' && data.message == '%eraser%'){
+            messages = [];
+            socket.broadcast.emit('newUser', refreshPage);
+        }else{
+            messages.push(data);
+            console.log(data);
+            socket.broadcast.emit('receivedMessage', encryptDecrypt(data));
+        }
     });
+    
+    socket.on('disconnect', function () {
+        io.emit('Um usuário saiu da sala!');
+  });
 });
 
 console.log("CONEXÃO ABERTA EM: http://localhost:"+PORT+"/");
