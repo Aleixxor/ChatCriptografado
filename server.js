@@ -19,6 +19,15 @@ app.use('/', (req, res) => {
     res.render('index.html');
 });
 
+function createNamespace (name) {
+    var group = io.of('/room-'+name);
+    group.on('connection', function(socket){
+        socket.on('message.send', function (data){
+            group.emit('message.sent', data);
+        });
+    });
+}
+
 function encryptDecrypt(message){
     var authors = message.author.split("");
     var messages = message.message.split("");
