@@ -1,1 +1,1 @@
-something
+web: node server.js
