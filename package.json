@@ -2,21 +2,22 @@
   "name": "Chat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "engines": {
-    "node": "10.3.0",
-  },
+  "main": "server.js",
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "*",
     "socket.io": "*",
     "yarn": "^1.9.4"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "10.3.0",
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
